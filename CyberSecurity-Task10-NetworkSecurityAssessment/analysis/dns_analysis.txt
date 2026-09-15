@@ -1,0 +1,6 @@
+===== DNS ANALYSIS =====
+frame.number ip.src ip.dst dns.qry.name dns.qry.type
+25 192.168.1.2 192.168.1.1 example.com 1
+27 192.168.1.2 192.168.1.1 example.com 28
+29 192.168.1.2 192.168.1.1 owasp.org 1
+31 192.168.1.2 192.168.1.1 owasp.org 28

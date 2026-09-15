@@ -1,0 +1,4 @@
+===== HTTP ANALYSIS =====
+frame.number ip.src tcp.srcport ip.dst tcp.dstport http.request.method http.host http.request.uri
+5 127.0.0.1 45332 127.0.0.1 8089 GET 127.0.0.1:8089 /
+17 127.0.0.1 45338 127.0.0.1 8089 HEAD 127.0.0.1:8089 /
