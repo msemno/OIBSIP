@@ -1,0 +1,89 @@
+# Task 1 — Basic Network Scanning with Nmap Results
+
+## Assessment Context
+
+Intern: Mahmoud Khaled
+Track: Security Analyst
+Task: Task 1 — Basic Network Scanning with Nmap
+Environment: Local Kali Linux VM
+Target: 127.0.0.1
+Authorization: Local VM owned and controlled by the assessor only
+
+## Tool Version
+
+Nmap version: 7.99
+
+## Target Information
+
+Target IP: 127.0.0.1
+Target name: localhost
+Network distance: 0 hops
+
+A temporary local Python HTTP service was started on 127.0.0.1:8080 to provide a safe local service for Nmap detection.
+
+## Scan 1 — Basic Nmap Scan
+
+Command:
+nmap 127.0.0.1
+
+Summary:
+The basic scan found one open TCP port.
+
+Result:
+8080/tcp open http-proxy
+
+Interpretation:
+Nmap's basic scan identified port 8080 as open. In a basic scan, Nmap may identify the service based on common port mappings rather than full service probing. Because of that, the service name appeared as http-proxy.
+
+## Scan 2 — Service and Version Detection
+
+Command:
+nmap -sV 127.0.0.1
+
+Summary:
+The service/version scan confirmed that port 8080 was running an HTTP service.
+
+Result:
+8080/tcp open http SimpleHTTPServer 0.6 (Python 3.14.7)
+
+Interpretation:
+The -sV scan actively probed the open port and identified the service as a Python SimpleHTTPServer. This is more accurate than the basic scan because service detection uses probing instead of only relying on port number assumptions.
+
+## Scan 3 — OS Detection
+
+Command:
+sudo nmap -O 127.0.0.1
+
+Summary:
+OS detection was attempted, but Nmap did not return an exact OS match.
+
+Result:
+No exact OS matches for host.
+
+Interpretation:
+This is acceptable because OS detection is not always exact, especially when scanning localhost or when Nmap does not have enough network behavior to make a confident match.
+
+## Open Port Analysis
+
+| Port | State | Service | Detected Version | What It Does | Security Observation |
+|---|---|---|---|---|---|
+| 8080/tcp | Open | HTTP | SimpleHTTPServer 0.6 / Python 3.14.7 | Serves web content over HTTP from the local test directory. | In this lab it is safe because it is bound to 127.0.0.1. In a real environment, exposed HTTP services should be reviewed, patched, monitored, and protected with access control and HTTPS where sensitive data is involved. |
+
+## Security Notes
+
+- Only localhost was scanned.
+- No external or third-party target was scanned.
+- The open service was intentionally started for this task.
+- Service/version detection gave more accurate information than the basic scan.
+- OS detection was attempted but produced no exact match, so no OS claim is made from the scan.
+
+## Evidence Files
+
+- scans/nmap_basic_scan.txt
+- scans/nmap_service_version_scan.txt
+- scans/nmap_os_detection_scan.txt
+- screenshots folder for terminal evidence
+
+## Conclusion
+
+The Nmap scan successfully identified one open local TCP service on port 8080. The scan demonstrated the difference between a basic port scan, a service/version detection scan, and OS detection. The task was completed in a local authorized VM lab.
