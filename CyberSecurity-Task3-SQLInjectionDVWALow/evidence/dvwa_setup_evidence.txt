@@ -1,0 +1,16 @@
+===== DOCKER CONTAINER =====
+CONTAINER ID   IMAGE                  COMMAND      CREATED          STATUS          PORTS                    NAMES
+e62a832405f4   vulnerables/web-dvwa   "/main.sh"   28 minutes ago   Up 28 minutes   127.0.0.1:4280->80/tcp   dvwa-task3
+
+===== LOCAL HTTP CHECK SANITIZED =====
+HTTP/1.1 302 Found
+Date: Sat, 26 Sep 2026 09:38:33 GMT
+Server: Apache/2.4.25 (Debian)
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+Location: login.php
+Content-Type: text/html; charset=UTF-8
+
+
+Note: Cookie headers were intentionally removed from this evidence file before publication.
