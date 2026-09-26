@@ -1,0 +1,31 @@
+# HTTP Block Test Result
+
+## Test Purpose
+Verify that UFW blocks inbound HTTP traffic on port 80.
+
+## Kali VM Server State
+A temporary Python HTTP server was running on the Kali VM and listening on 0.0.0.0:80.
+
+Observed Kali command:
+sudo ss -lntp | grep ':80'
+
+Observed Kali result:
+LISTEN 0 5 0.0.0.0:80 0.0.0.0:* users:(("python3",pid=42268,fd=3))
+
+## Windows Host Test
+Command executed from Windows PowerShell:
+
+Test-NetConnection 192.168.178.128 -Port 80
+
+Observed result:
+WARNING: TCP connect to (192.168.178.128 : 80) failed
+ComputerName     : 192.168.178.128
+RemoteAddress    : 192.168.178.128
+RemotePort       : 80
+InterfaceAlias   : VMware Network Adapter VMnet8
+SourceAddress    : 192.168.178.1
+PingSucceeded    : True
+TcpTestSucceeded : False
+
+## Conclusion
+The host could ping the Kali VM, but TCP connection to port 80 failed. This confirms that UFW blocked inbound HTTP traffic while the service was listening.
